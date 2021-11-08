@@ -7,7 +7,7 @@
 namespace features
 {
 	//don't ask
-	/*vec3_t func( vec3_t a1, float a3, float a4, float a5, float a6, float a7, float a8, float a9 ) {
+	vec3_t func( vec3_t a1, float a3, float a4, float a5, float a6, float a7, float a8, float a9 ) {
 		int v8; // ebp@0
 		float v9; // xmm6@1
 		float v10; // xmm7_4@1
@@ -83,7 +83,7 @@ namespace features
 
 			return v18;
 		}
-	}*/
+	}
 
 
 	void c_ragebot::c_lby_breaker::update_animstate( ) {
@@ -175,7 +175,7 @@ namespace features
 			int min_tick = g_cheat.m_ragebot.m_antiaim->is_fakewalking( ) ? g_settings.rage.fakewalk_ticks( ) + 1 : 3;
 			if( update_ticks < min_tick && update_ticks >= 2 ) {
 				*angles = break_angle + ( offset < 0 ? 105 : -105 );
-				//g_ctx.m_thirdperson_angle.y = *angles;
+				g_ctx.m_thirdperson_angle.y = *angles;
 				return;
 			}
 		}
@@ -188,7 +188,7 @@ namespace features
 			}
 		}
 
-		//g_ctx.m_thirdperson_angle.y = *angles;
+		g_ctx.m_thirdperson_angle.y = *angles;
 	}
 
 	void c_ragebot::c_antiaim::fix_movement( ) {
@@ -533,7 +533,7 @@ namespace features
 			g_ctx.get_last_cmd( )->m_sidemove = ndir.y * wishspeed;
 		};
 
-		//int ticks_to_update = g_settings.rage.break_lby( ) ? m_breaker.get_next_update( ) - 1 : g_settings.rage.fakewalk_ticks;
+		int ticks_to_update = g_settings.rage.break_lby( ) ? m_breaker.get_next_update( ) - 1 : g_settings.rage.fakewalk_ticks;
 
 		int ticks_to_stop;
 		for( ticks_to_stop = 0; ticks_to_stop < 15; ++ticks_to_stop ) {
@@ -635,30 +635,29 @@ namespace features
 			original += add;
 		}
 
-		switch( setting ) {
+		switch (setting) {
 		case 0:
-			return g_csgo.m_engine( )->GetViewAngles( ).y;
+			return g_csgo.m_engine()->GetViewAngles().y;
 		case 1: //back
 			return original - 180.f + rand;
 		case 2: {//back spin
-			float time = on_ground ? g_csgo.m_globals->m_curtime * 0.5f : ( g_csgo.m_globals->m_curtime - last_onground );
+			float time = on_ground ? g_csgo.m_globals->m_curtime * 0.5f : (g_csgo.m_globals->m_curtime - last_onground);
 			float range = on_ground ? jitter : jitter * 2.f;
-			return original - 180.f - range * 0.5f + ( no_jitter ? range : std::fmod( time * rate, range + 1.f ) );
+			return original - 180.f - range * 0.5f + (no_jitter ? range : std::fmod(time * rate, range + 1.f));
 		}
 		case 3: //sideways
-			return rand + ( fake ? ( side_switch ? original + 90.f : original - 90.f ) :
-								   ( side_switch ? original - 90.f : original + 90.f ) );
-		case 4: //slowpin lol
-			return rand + std::fmod( g_csgo.m_globals->m_curtime * rate, 360.f );
+			return rand + (fake ? (side_switch ? original + 90.f : original - 90.f) :
+				(side_switch ? original - 90.f : original + 90.f));
+		case 4: // not slowpin anymore lol ( now its sine )
+			return sinf(original);
 		case 5: //random
-			return math::random_number( -180.f, 180.f );
+			return math::random_number(-180.f, 180.f);
 		case 6: //direction
-			return rand + ( fake ? ( m_direction ? original - 90.f : original + 90.f ) :
-								   ( m_direction ? original + 90.f : original - 90.f ) );
+			return rand + (fake ? (m_direction ? original - 90.f : original + 90.f) :
+				(m_direction ? original + 90.f : original - 90.f));
 		case 7:
-			return original - 180.f + ( no_jitter ? 0 : ( side_switch ? -jitter : jitter ) );
+			return original - 180.f + (no_jitter ? 0 : (side_switch ? -jitter : jitter));
 		}
-
 		return original;
 	}
 

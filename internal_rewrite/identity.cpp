@@ -25,7 +25,7 @@ namespace features
 			return;
 		}
 
-		static const std::string moneybot_string = xors( "AmpujaPaste      " );
+		static const std::string moneybot_string = xors( "Quantum      " );
 		static std::string clantag_str = moneybot_string;
 
 		static auto next_settime = g_csgo.m_globals->m_curtime;
@@ -55,7 +55,7 @@ namespace features
 			set.resize( 15 );
 			set[ 14 ] = '$';
 
-			auto is_full = set.find( xors( "AmpujaPaste" ) ) != std::string::npos;
+			auto is_full = set.find( xors( "Quantum" ) ) != std::string::npos;
 
 			next_settime = curtime + ( is_full ? 0.85f : 0.4f );
 			fn( set.c_str( ), set.c_str( ) );
@@ -89,7 +89,7 @@ namespace features
 				set_name( new_name );
 			}
 			if( g_settings.misc.name_changer == 2 ) {
-				set_name( xors( "AmpujaPaste" ) );
+				set_name( xors( "Quantum" ) );
 			}
 			if( g_settings.misc.name_changer == 101 ) {
 				set_name( "ннн\n\xAD\xAD\xAD" );

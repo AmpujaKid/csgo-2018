@@ -130,7 +130,7 @@ namespace listeners
 				}
 				else if( g_settings.misc.log_hits( ) ) {
 					char print_str[ 100 ];
-					sprintf_s( print_str, "[\AmpujaPaste\1] hit player in %s for %d", util::hitgroup_to_string( hitgroup ).c_str( ), dmg );
+					sprintf_s( print_str, "[\Quantum\1] hit player in %s for %d", util::hitgroup_to_string( hitgroup ).c_str( ), dmg );
 
 					g_csgo.m_clientmode( )->m_pChatElement->ChatPrintf( 0, 0, print_str );
 					g_con->game_console_print( "%s\n", print_str );

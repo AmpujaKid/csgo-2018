@@ -200,7 +200,7 @@ namespace features
 	void c_extra::rich_presence_flex( ) {
 		g_csgo.m_steam_friends( )->set_rich_presence( "game:mode", "competitive" );
 		g_csgo.m_steam_friends( )->set_rich_presence( "game:mapgroupname", "mg_active" );
-		g_csgo.m_steam_friends( )->set_rich_presence( "game:score", "AmpujaPaste" );
+		g_csgo.m_steam_friends( )->set_rich_presence( "game:score", "Quantum" );
 	}
 
 	void c_extra::remove_rich_presence_flex( ) {

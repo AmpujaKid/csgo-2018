@@ -91,10 +91,10 @@ void c_context::on_cmove_end( user_cmd_t* cmd ) {
 
 					ent->get_name_safe( name );
 
-					strenc::w_sprintf_s( print_str, 100, "[\AmpujaPaste\1] hit %s in %s for %d\0", name, util::hitgroup_to_string( it.m_hit ).c_str( ), it.m_damage );
+					strenc::w_sprintf_s( print_str, 100, "[\Quantum\1] hit %s in %s for %d\0", name, util::hitgroup_to_string( it.m_hit ).c_str( ), it.m_damage );
 				}
 				else if( it.m_missed )
-					strenc::w_sprintf_s( print_str, 100, "[\AmpujaPaste\1] missed shot due to spread\0" );
+					strenc::w_sprintf_s( print_str, 100, "[\Quantum\1] missed shot due to spread\0" );
 
 				g_csgo.m_clientmode( )->m_pChatElement->ChatPrintf( 0, 0, print_str );
 				g_con->game_console_print( "%s\n", print_str );

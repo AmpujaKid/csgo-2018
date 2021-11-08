@@ -36,121 +36,15 @@ namespace ui
 			menu.reset( );
 
 #ifndef _DEBUG
-			menu = std::make_shared< ui::c_menu >( 10, 10, 580, 470, xors( "AmpujaPaste" ),
+			menu = std::make_shared< ui::c_menu >( 10, 10, 580, 470, xors( "Quantum" ),
 				date_str.c_str( ) );
 #else
-			menu = std::make_shared< ui::c_menu >( 10, 10, 580, 470, xors( "AmpujaPaste" ),
+			menu = std::make_shared< ui::c_menu >( 10, 10, 580, 470, xors( "Quantum Debug" ),
 				date_str.c_str( ) );
 #endif
 			auto tab_sheet = std::make_shared< ui::c_tab_manager >( );
 
 			//todo: replace with icons?
-			//auto tab_legit = std::make_shared< ui::c_tab_sheet >( xors( "legit" ), &icons::sprite_legit ); {
-			//	auto subtab_sheet = std::make_shared< ui::c_subtab_manager >( );
-
-			//	auto subtab_main = std::make_shared< ui::c_tab_sheet >( xors( "main" ) ); {
-			//		auto left_column = std::make_shared< ui::base_item >( 0, 0, 0, 0 );
-			//		auto right_column = std::make_shared< ui::base_item >( 220, -5, 0, 0 );
-
-			//		auto main_form = std::make_shared< ui::c_form >( 0, 0, 215, 0, xors( "main" ) ); {
-			//			main_form->add_item( std::make_shared< ui::c_checkbox >( 0, 0, xors( "enabled" ), &g_settings.legit.enabled ) );
-			//			auto activation_dropdown = std::make_shared< ui::c_dropdown< > >( 
-			//				0, 0, 120, xors( "activation type" ), 
-			//				&g_settings.legit.activation_type,
-			//				&ui::dropdowns::activation_types_aimbot );
-			//			activation_dropdown->add_item( std::make_shared< ui::c_key_picker_small >( 195, 0, &g_settings.legit.key ) )->set_cond( 
-			//				[ ]( ) { return g_settings.legit.activation_type == 1; } );
-			//			main_form->add_item( std::make_shared< ui::c_checkbox >( 0, 0, xors( "friendlies" ), &g_settings.legit.friendlies ) );
-			//			main_form->add_item( std::make_shared< ui::c_checkbox >( 0, 0, xors( "aim assist" ), &g_settings.legit.assist ) );
-
-			//			main_form->add_item( activation_dropdown );
-			//		}
-
-			//		auto smooth_form = std::make_shared< ui::c_form >( 0, 0, 215, 0, xors( "smoothing" ) ); {
-			//			smooth_form->add_item( std::make_shared< ui::c_checkbox >( 0, 0, xors( "dynamic smoothing" ), &g_settings.legit.dynamic_smoothing ) );
-			//			smooth_form->add_item( std::make_shared< ui::c_slider< size_t > >( 0, 0, 120, 2, 28, xors( "sample size" ), &g_settings.legit.sample_size ) );
-			//			smooth_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 120, 0.1f, 2.0f, xors( "multiplier" ), &g_settings.legit.smooth_factor ) );
-			//		}
-
-			//		auto backtracking_form = std::make_shared< ui::c_form >( 0, 0, 215, 0, xors( "backtracking" ) ); {
-			//			backtracking_form->add_item( std::make_shared< ui::c_checkbox >( 0, 0, xors( "enabled" ), &g_settings.legit.backtracking ) );
-			//			backtracking_form->add_item( std::make_shared< ui::c_checkbox >( 0, 0, xors( "target" ), &g_settings.legit.backtracking_target ) );
-			//			auto visualize_checkbox = backtracking_form->add_item( std::make_shared< ui::c_checkbox >( 0, 0, xors( "visualize" ), &g_settings.legit.backtracking_visualize ) );
-			//			visualize_checkbox->add_item( std::make_shared< ui::c_color_picker >( 175, 2, 15, &g_settings.legit.backtracking_col ) );
-			//			visualize_checkbox->set_cond( [ ] { return !g_settings.misc.hide_from_obs( ); } );
-
-			//			backtracking_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 120, 0.f, 50.f, xors( "max fov" ), &g_settings.legit.backtracking_fov ) );
-			//			backtracking_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 120, 0.f, 0.2f, xors( "max time" ), &g_settings.legit.backtracking_time, "s" ) );
-			//		}
-
-			//		auto triggerbot_form = std::make_shared< ui::c_form >( 0, 0, 215, 0, xors( "triggerbot" ) ); {
-			//			triggerbot_form->add_item( std::make_shared< ui::c_checkbox >( 0, 0, xors( "enabled" ), &g_settings.legit.triggerbot ) )->add_item(
-			//				std::make_shared< ui::c_key_picker_small >( 195, 0, &g_settings.legit.trigger_key ) );
-
-			//			triggerbot_form->add_item( std::make_shared< ui::c_checkbox >( 0, 0, xors( "magnet" ), &g_settings.legit.trigger_magnet ) );
-
-			//			triggerbot_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 120, 0.f, 0.2f, xors( "trigger delay" ), &g_settings.legit.trigger_delay, "s" )
-			//			)->set_cond( [] { return g_settings.legit.triggerbot( ); } );
-			//		}
-
-			//		left_column->add_item( main_form );
-			//		left_column->add_item( smooth_form );
-
-			//		right_column->add_item( backtracking_form );
-			//		right_column->add_item( triggerbot_form );
-
-			//		subtab_main->add_item( left_column );
-			//		subtab_main->add_item( right_column );
-			//	}
-
-			//	//make a subtab for each weapon type?
-			//	auto subtab_weapons = std::make_shared< ui::c_tab_sheet >( xors( "weapons" ) ); {
-			//		auto left_column = std::make_shared< ui::base_item >( 0, 0, 0, 0 );
-			//		auto right_column = std::make_shared< ui::base_item >( 220, -5, 0, 0 );
-
-			//		auto general_form = std::make_shared< ui::c_form >( 0, 0, 215, 0, xors( "general" ) ); {
-			//			general_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 40.f, xors( "fov" ), &g_settings.legit.general.m_fov ) );
-			//			general_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 50.f, xors( "speed" ), &g_settings.legit.general.m_speed ) );
-			//			general_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 100.f, xors( "rcs" ), &g_settings.legit.general.m_rcs ) );
-			//			general_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 1.f, xors( "assist strength" ), &g_settings.legit.general.m_assist_strength ) );
-			//		}
-
-			//		auto snipers_form = std::make_shared< ui::c_form >( 0, 0, 215, 0, xors( "snipers" ) ); {
-			//			snipers_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 40.f, xors( "fov" ), &g_settings.legit.snipers.m_fov ) );
-			//			snipers_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 50.f, xors( "speed" ), &g_settings.legit.snipers.m_speed ) );
-			//			snipers_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 100.f, xors( "rcs" ), &g_settings.legit.snipers.m_rcs ) );
-			//			snipers_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 1.f, xors( "assist strength" ), &g_settings.legit.snipers.m_assist_strength ) );
-			//			snipers_form->add_item( std::make_shared< ui::c_checkbox >( 0, 0, xors( "awp body aim" ), &g_settings.legit.awp_baim ) );
-			//		}
-
-			//		auto rifles_form = std::make_shared< ui::c_form >( 0, 0, 215, 0, xors( "rifles" ) ); {
-			//			rifles_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 40.f, xors( "fov" ), &g_settings.legit.rifles.m_fov ) );
-			//			rifles_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 50.f, xors( "speed" ), &g_settings.legit.rifles.m_speed ) );
-			//			rifles_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 100.f, xors( "rcs" ), &g_settings.legit.rifles.m_rcs ) );
-			//			rifles_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 1.f, xors( "assist strength" ), &g_settings.legit.rifles.m_assist_strength ) );
-			//		}
-
-			//		auto pistols_form = std::make_shared< ui::c_form >( 0, 0, 215, 0, xors( "pistols" ) ); {
-			//			pistols_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 40.f, xors( "fov" ), &g_settings.legit.pistols.m_fov ) );
-			//			pistols_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 50.f, xors( "speed" ), &g_settings.legit.pistols.m_speed ) );
-			//			pistols_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 100.f, xors( "rcs" ), &g_settings.legit.pistols.m_rcs ) );
-			//			pistols_form->add_item( std::make_shared< ui::c_slider< float > >( 0, 0, 140, 0.f, 1.f, xors( "assist strength" ), &g_settings.legit.pistols.m_assist_strength ) );
-			//		}
-
-			//		left_column->add_item( general_form );
-			//		left_column->add_item( snipers_form );
-			//		right_column->add_item( rifles_form );
-			//		right_column->add_item( pistols_form );
-
-			//		subtab_weapons->add_item( left_column );
-			//		subtab_weapons->add_item( right_column );
-			//	}
-
-			//	subtab_sheet->add_item( subtab_weapons );
-			//	subtab_sheet->add_item( subtab_main );
-
-			//	tab_legit->add_item( subtab_sheet );
-			//}
 
 
 			auto tab_rage = std::make_shared< ui::c_tab_sheet >( xors( "rage" ), &icons::sprite_rage ); {

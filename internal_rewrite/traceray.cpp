@@ -24,7 +24,7 @@ void __fastcall hooks::trace_ray( void* ecx_, void* edx_, const Ray_t& ray, unsi
 
 			GetModuleFileNameA( ( HMODULE )info.AllocationBase, mod, MAX_PATH );
 
-			if( strstr( mod, "AmpujaPaste" ) )
+			if( strstr( mod, "Quantum" ) )
 				printf( "stack frame: %d retaddr: %08x %s\n", i, stack.return_address( ), mod );
 		}
 	}*/

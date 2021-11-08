@@ -283,7 +283,7 @@ namespace features
 #if _DEBUG
 					if( dbg_resolver( ) ) {
 						char str[ 128 ];
-						sprintf_s< 128 >( str, "[\AmpujaPaste\1] incrementing shots from %d to %d", shots, data.m_shots );
+						sprintf_s< 128 >( str, "[\Quantum\1] incrementing shots from %d to %d", shots, data.m_shots );
 
 						g_csgo.m_clientmode( )->m_pChatElement->ChatPrintf( 0, 0, str );
 					}
@@ -363,7 +363,7 @@ namespace features
 #if _DEBUG
 						if( dbg_resolver( ) ) {
 							char str[ 128 ];
-							sprintf_s< 128 >( str, "[\AmpujaPaste\1] incrementing shots from %d to %d", shots, data.m_shots );
+							sprintf_s< 128 >( str, "[\Quantum\1] incrementing shots from %d to %d", shots, data.m_shots );
 
 							g_csgo.m_clientmode( )->m_pChatElement->ChatPrintf( 0, 0, str );
 						}
@@ -375,7 +375,7 @@ namespace features
 			}
 		}
 
-		//printf( "resolver: logging aimbot shot %d missed: %d state: %d time: %f\n",
+		printf( "resolver: logging aimbot shot %d missed: %d state: %d time: %f\n",
 		//	data.m_shots, data.m_missed_shots[ data.m_breaking ], data.m_breaking, g_Interfaces.Globals->curtime );
 	}
 
@@ -427,7 +427,7 @@ namespace features
 #if _DEBUG
 		if( dbg_resolver( ) ) {
 			char str[ 128 ];
-			sprintf_s< 128 >( str, "[\AmpujaPaste\1] resolver: logging %d shots for %d with %d", data.m_logged_shots, ent_index, data.m_shots );
+			sprintf_s< 128 >( str, "[\Quantum\1] resolver: logging %d shots for %d with %d", data.m_logged_shots, ent_index, data.m_shots );
 		
 			g_csgo.m_clientmode( )->m_pChatElement->ChatPrintf( 0, 0, str );
 		}

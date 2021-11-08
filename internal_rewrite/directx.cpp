@@ -201,7 +201,7 @@ long __stdcall hooks::d3d::present( IDirect3DDevice9* device, RECT* source, RECT
 				transformed = true;
 			}
 
-			str = xors( "AmpujaPaste | " );
+			str = xors( "Quantum | " );
 			auto nci = g_csgo.m_engine( )->GetNetChannelInfo( );
 			if( nci ) {
 				char latency_str[ 32 ];

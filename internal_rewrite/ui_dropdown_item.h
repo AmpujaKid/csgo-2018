@@ -48,7 +48,7 @@ namespace ui
 			{ xors( "direction" ), 6 },
 			{ xors( "switch" ), 7 },
 			{ xors( "sideways" ), 3 },
-			{ xors( "golden spin" ), 4 },
+			{ xors( "sine" ), 4 },
 			{ xors( "random" ), 5 },
 		};
 
@@ -109,10 +109,10 @@ namespace ui
 		};
 
 		static std::vector< dropdown_item_t< > > configs = {
-			{ xors( "legit" ), 0 },
-			{ xors( "closet" ), 1 },
-			{ xors( "rage 1" ), 2 },
-			{ xors( "rage 2" ), 3 },
+			{ xors( "config 1" ), 0 },
+			{ xors( "config 2" ), 1 },
+			{ xors( "config 3" ), 2 },
+			{ xors( "config 4" ), 3 },
 #if _DEBUG
 			{ xors( "test" ), 4 },
 #endif
@@ -142,7 +142,7 @@ namespace ui
 		static std::vector< dropdown_item_t< > > name_changers = {
 			{ xors( "off" ), 0 },
 			{ xors( "dollar" ), 1 },
-			{ xors( "AmpujaPaste" ), 2 },
+			{ xors( "quantum" ), 2 },
 		};
 
 		static std::vector< dropdown_item_t< > > weapon_esp_types = {

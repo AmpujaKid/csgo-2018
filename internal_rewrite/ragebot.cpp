@@ -140,9 +140,9 @@ namespace features
 			vec3_t max_dir = math::angle_vectors(math::vector_angles(center, box->bbmax));
 			vec3_t max = center + max_dir * dist * g_settings.rage.active->m_hitbox_scale * 1.1f;
 
-			//float radius = box->m_flRadius * 1.1f * g_settings.rage.active->m_hitbox_scale;
-			//min -= vec3_t( radius, radius, radius );
-			//max += vec3_t( radius, radius, radius );
+			float radius = box->m_flRadius * 1.1f * g_settings.rage.active->m_hitbox_scale;
+			min -= vec3_t( radius, radius, radius );
+			max += vec3_t( radius, radius, radius );
 
 			std::array< vec3_t, 8 > points = {
 				vec3_t{ min.x, min.y, min.z },
@@ -187,7 +187,7 @@ namespace features
 					}
 				}
 
-				/*vec3_t ang = math::vector_angles( g_ctx.m_local->get_eye_pos( ), trans_point );
+				vec3_t ang = math::vector_angles( g_ctx.m_local->get_eye_pos( ), trans_point );
 
 				vec3_t delta = center_ang - ang;
 				delta.clamp( );
@@ -211,7 +211,7 @@ namespace features
 				if( delta.x > lb_ang.x && delta.y < lb_ang.y ) {
 					lb_ang = delta;
 					lb = trans_point;
-				}*/
+				}
 			}
 
 			vec3_t point_list[4] = {
@@ -221,7 +221,7 @@ namespace features
 				rb
 			};
 
-			/*
+			
 			for( size_t i{ }; i < 4; ++i ) {
 				if( point_list[ i ] ) {
 					CTraceFilterOneEntity filter;
@@ -239,7 +239,7 @@ namespace features
 						}
 					}
 				}
-			}*/
+			}
 		}
 
 		return ent->get_hitbox_pos(hitbox);
@@ -445,8 +445,8 @@ namespace features
 		max_speed = std::min< float >(max_speed, 250.f);
 
 		if (g_ctx.m_local->m_fFlags() & FL_DUCKING) {
-			//	max_speed /= 3.f;
-			//	accel /= 3.f;
+				max_speed /= 3.f;
+				accel /= 3.f;
 		}
 
 		float surf_friction = 1.f;
@@ -716,10 +716,10 @@ namespace features
 						//ENSURE THE MOST ACCURATE DATA
 						entity->m_vecVelocity() = entity->get_animdata().m_last_velocity;
 
-						auto velocity = entity->m_vecVelocity();
+						const auto& velocity = entity->m_vecVelocity();
 						auto min_vel = 64 / TICK_INTERVAL() / 14;
 
-						//IS HE A SLOW BOI OR A FAST NIGGER
+						//IS HE A SLOW BOI OR A FAST BOI
 						if (g_settings.rage.fakelag_resolver() && velocity.length2d() > min_vel - 10.f) {
 							auto new_record = *last_simtime_record;
 
@@ -732,7 +732,7 @@ namespace features
 
 							float time_since_update = g_ctx.pred_time() + latency - entity->m_flSimulationTime();
 
-							//NIGGA UPDATED ALREADY FUCK ADAPTIVE
+							//BITCH UPDATED ALREADY FUCK ADAPTIVE
 							if (TIME_TO_TICKS(time_since_update) > pred_choke && pred_choke > 0) {
 								if (g_settings.rage.fakelag_resolver() == 1)
 									continue;
@@ -746,8 +746,8 @@ namespace features
 								}
 							}
 
-							//if( !new_record.is_valid( ) )
-							//	continue;
+							if( !new_record.is_valid( ) )
+								continue;
 
 							int shots = m_resolver->get_shots(it);
 							bool recalc = shots != last_simtime_record->m_shots;
